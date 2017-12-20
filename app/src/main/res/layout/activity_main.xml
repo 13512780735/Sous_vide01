@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defualt_window_background"
+    android:orientation="vertical"
+    tools:context="com.likeit.sous_vide.ui.MainActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_main_home_logo"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1">
+
+            <!--<TextView-->
+                <!--android:id="@+id/logo_title"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="XXXX"-->
+                <!--android:padding="10dip"-->
+                <!--android:gravity="center"/>-->
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                ></com.daimajia.slider.library.SliderLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_marginBottom="20dip"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="Working State:Standby" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_setTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="20dip">
+
+                        <TextView
+                            android:id="@+id/tv_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/icon_settime"
+                            android:gravity="center_vertical"
+                            android:text="120'"
+                            android:textColor="@color/defualt_textcolor_a"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Set Time"
+                            android:textColor="@color/header_bg" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_remainingtime"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="20dip">
+
+                        <TextView
+                            android:id="@+id/tv_remainingtime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/icon_remainingtime"
+                            android:gravity="center_vertical"
+                            android:text="0'"
+                            android:textColor="@color/defualt_textcolor_a"
+
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Remaining Time"
+                            android:textColor="@color/defualt_textcolor_c" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_open_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/icon_tab_close" />
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_settemp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="20dip">
+
+                        <TextView
+                            android:id="@+id/tv_settemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/icon_settemp"
+                            android:gravity="center_vertical"
+                            android:text="55.0℃"
+                            android:textColor="@color/defualt_textcolor_a"
+
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Set Temp"
+                            android:textColor="@color/header_bg" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_currenttemp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="20dip">
+
+                        <TextView
+                            android:id="@+id/tv_currenttemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/icon_currenttemp"
+                            android:gravity="center_vertical"
+                            android:text="0℃"
+                            android:textColor="@color/defualt_textcolor_a"
+
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dip"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Current Temp"
+                            android:textColor="@color/defualt_textcolor_c" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

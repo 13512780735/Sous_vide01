@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.sous_vide.ui.ConnectDevice02Activity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_margin="60dip">
+
+        <com.qfxl.view.RoundProgressBar
+            android:id="@+id/RoundProgressBar"
+            android:layout_width="120dip"
+            android:layout_height="120dip"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            app:rpb_centerBackgroundColor="#FCFCFC"
+            app:rpb_centerTextColor="#000000"
+            app:rpb_centerTextSize="14sp"
+            app:rpb_countDownTimeInMillis="5000"
+            app:rpb_progressDirection="reverse"
+            app:rpb_sweepStartAngle="-90"
+            app:rpb_sweepStrokeColor="#999999"
+            app:rpb_sweepStrokeWidth="3dp" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dip"
+            android:layout_marginRight="40dip"
+            android:layout_marginTop="40dip"
+            android:gravity="center_horizontal"
+            android:padding="10dip"
+            android:text="XXX" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/connect_tv_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dip_xxlarge"
+        android:layout_marginRight="@dimen/dip_xxlarge"
+        android:layout_marginTop="40dip"
+        android:background="@drawable/button_blue_bg"
+        android:gravity="center"
+        android:padding="12dip"
+        android:text="Next"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_xxhdpi" />
+</LinearLayout>

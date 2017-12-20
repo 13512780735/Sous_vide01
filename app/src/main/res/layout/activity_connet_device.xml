@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.sous_vide.ui.ConnectDeviceActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="40dip"
+            android:src="@mipmap/icon_wifi" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/width40"
+            android:layout_marginRight="@dimen/width40"
+            android:gravity="center"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/wifi_connect"
+            android:textColor="@color/defualt_textcolor_c" />
+
+        <LinearLayout
+            android:id="@+id/ll_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dip"
+            android:background="@drawable/edit_input_bg"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <EditText
+                android:id="@+id/wifi_et_phone"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_gravity=""
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical|left"
+                android:hint="Please connect you mobile to WIFI"
+                android:textColor="@color/defualt_textcolor_b"
+                android:textColorHint="@color/defualt_textcolor_c" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dip"
+            android:background="@drawable/edit_input_bg"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <EditText
+                android:id="@+id/wifi_et_password"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_gravity=""
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical|left"
+                android:hint="Please input WIFI password"
+                android:inputType="number"
+                android:textColor="@color/defualt_textcolor_b"
+                android:textColorHint="@color/defualt_textcolor_f" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkbox_cb"
+            style="@style/mycheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:padding="10dip"
+            android:text="Have a long pressed for 3 seconds"
+            android:textColor="@color/defualt_textcolor_b"
+            android:textSize="@dimen/text_size_hdpi" />
+
+        <TextView
+            android:id="@+id/connect_tv_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dip_xxlarge"
+            android:layout_marginRight="@dimen/dip_xxlarge"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/button_blue_bg"
+            android:gravity="center"
+            android:padding="12dip"
+            android:text="Next"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_xxhdpi" />
+</LinearLayout>

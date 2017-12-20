@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="header_bg">#69c9fc</color>
+    <color name="defualt_window_background">#FCFCFC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="defualt_textcolor_a">#000000</color>   <!--重要的文字信息-->
+    <color name="defualt_textcolor_b">#333333</color>
+    <color name="defualt_textcolor_c">#666666</color>    <!--次重要的文字信息-->
+    <color name="defualt_textcolor_d">#999999</color>    <!--为选中的和注释的文字颜色-->
+    <color name="defualt_textcolor_e">#dbdbdb</color>    <!--分割线、为选中的按钮等-->
+    <color name="defualt_textcolor_f">#b2b2b2</color>    <!--tem字体颜色-->
+    <color name="defualt_textcolor_g">#FEA64F</color>    <!--橙色item字体颜色-->
+    <color name="defualt_textcolor_h">#AFD6E7</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_i">#FDD541</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_k">#FFEBB4</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_j">#FF9055</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_l">#26395A</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_z">#B4C0D7</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_x">#39393B</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_v">#DFD6D9</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_n">#977EFF</color>    <!--item字体颜色-->
+    <color name="defualt_textcolor_m">#FFDDDE</color>    <!--item字体颜色-->
+</resources>
