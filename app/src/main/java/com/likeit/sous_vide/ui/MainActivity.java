@@ -12,6 +12,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.base.BaseActivity;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted;
+import com.likeit.sous_vide.listenter.OnLoginInforCompleted01;
 
 import java.util.HashMap;
 
@@ -19,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements OnLoginInforCompleted {
+public class MainActivity extends BaseActivity implements OnLoginInforCompleted, OnLoginInforCompleted01 {
     @BindView(R.id.slider)
     SliderLayout mSliderLayout;
     //    @BindView(R.id.logo_title)
@@ -32,8 +33,11 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted 
     ImageView iv_open_close;
     @BindView(R.id.tv_time)
     TextView tv_time;
+    @BindView(R.id.tv_settemp)
+    TextView tv_settemp;
     int type = 0;//0; 代表关 1：代表开
     private SetTimeFragment dialogFragment;
+    private SetTempFragment dialogFragment01;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted 
                 showTime();
                 break;
             case R.id.ll_settemp:
+                showTemp();
                 break;
             case R.id.iv_open_close:
                 if (type == 0) {
@@ -97,21 +102,26 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted 
         }
     }
 
+    private void showTemp() {
+        dialogFragment01 = new SetTempFragment();
+        dialogFragment01.show(this.getSupportFragmentManager(), "android");
+        dialogFragment01.setOnLoginInforCompleted01(this);
+    }
+
     private void showTime() {
         dialogFragment = new SetTimeFragment();
         dialogFragment.show(this.getSupportFragmentManager(), "android");
         dialogFragment.setOnLoginInforCompleted(this);
-//        dialogFragment.setOnDialogListener(new SetTimeFragment.OnDialogListener() {
-//            @Override
-//            public void onDialogClick(int person) {
-//                tv_time.setText(person);
-//            }
-//        });
     }
 
 
     @Override
     public void inputLoginInforCompleted(String time) {
         tv_time.setText(time + " '");
+    }
+
+    @Override
+    public void inputLoginInforCompleted01(String temp) {
+        tv_settemp.setText(temp);
     }
 }

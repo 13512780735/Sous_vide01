@@ -58,7 +58,7 @@ public class SetTimeFragment extends DialogFragment implements View.OnClickListe
         picker_minute.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
         tv_save.setOnClickListener(this);
-        setData(picker_hour, 0, 11, 02);
+        setData(picker_hour, 0, 99, 02);
         setData(picker_minute, 0, 59, 00);
     }
 
