@@ -13,6 +13,7 @@ import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.base.BaseActivity;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted01;
+import com.machtalk.sdk.connect.MachtalkSDK;
 
 import java.util.HashMap;
 
@@ -35,7 +36,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
     TextView tv_time;
     @BindView(R.id.tv_settemp)
     TextView tv_settemp;
-    int type = 0;//0; 代表关 1：代表开
+    String type = "0";//0; 代表关 1：代表开
     private SetTimeFragment dialogFragment;
     private SetTempFragment dialogFragment01;
 
@@ -44,6 +45,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        MachtalkSDK.getInstance().setContext(mContext);
         initTitle("Recipes");
         imageSlider();
     }
@@ -81,6 +83,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
 
     }
 
+
     @OnClick({R.id.ll_setTime, R.id.ll_settemp, R.id.iv_open_close})
     public void onClick(View v) {
         switch (v.getId()) {
@@ -91,12 +94,15 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                 showTemp();
                 break;
             case R.id.iv_open_close:
-                if (type == 0) {
+                if ("0".equals(type)) {
                     iv_open_close.setImageResource(R.mipmap.icon_tab_open);
-                    type = 1;
-                } else if (type == 1) {
+                    MachtalkSDK.getInstance().operateDevice("1751", new String[]{"101"}, new String[]{type});
+                    type = "1";
+                } else if ("1".equals(type)) {
                     iv_open_close.setImageResource(R.mipmap.icon_tab_close);
-                    type = 0;
+                    MachtalkSDK.getInstance().operateDevice("1751", new String[]{"101"}, new String[]{type});
+                    type = "0";
+
                 }
                 break;
         }
