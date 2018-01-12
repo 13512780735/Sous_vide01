@@ -1,6 +1,7 @@
 package com.likeit.sous_vide.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -8,12 +9,17 @@ import android.view.WindowManager;
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.base.BaseActivity;
 import com.likeit.sous_vide.util.AndroidWorkaround;
+import com.machtalk.sdk.connect.MachtalkSDK;
+import com.machtalk.sdk.connect.MachtalkSDKListener;
+import com.machtalk.sdk.domain.Result;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
 public class LoginActivity extends BaseActivity {
+    private MyMachtalkSDKListener mSdkListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +33,40 @@ public class LoginActivity extends BaseActivity {
             AndroidWorkaround.assistActivity(findViewById(android.R.id.content));
         }
         ButterKnife.bind(this);
+        mSdkListener = new MyMachtalkSDKListener();
+        MachtalkSDK.getInstance().setContext(this);
+        MachtalkSDK.getInstance().setSdkListener(mSdkListener);
+        MachtalkSDK.getInstance().userLogin("zc160428", "zc171115", 58);
+    }
+
+    class MyMachtalkSDKListener extends MachtalkSDKListener {
+        @Override
+        public void onUserLogin(Result result, String user) {
+            Log.d("TAG", "result-->" + result + "user-->" + user);
+            int success = Result.FAILED;
+            String errmesg = null;
+            if (result != null) {
+                success = result.getSuccess();
+                errmesg = result.getErrorMessage();
+            }
+            if (success == Result.SUCCESS) {
+//                editor.putString(Constant.SP_KEY_USERNAME, telephone);
+//                editor.putString(Constant.SP_KEY_PASSWORD, password);
+//                editor.commit();
+//                Log.i(TAG, "store username: " + telephone + " password: " + password);
+//                DemoGlobal.instance().setUserName(telephone);
+//                DemoGlobal.instance().setPassword(password);
+//
+//                Intent it = new Intent(UserLogin.this, Main.class);
+//                startActivity(it);
+//                UserLogin.this.finish();
+            } else {
+//                if (errmesg == null) {
+//                    errmesg = getResources().getString(R.string.network_exception);
+//                }
+//                Util.showToast(context, errmesg);
+            }
+        }
     }
 
     @OnClick({R.id.iv_header_right, R.id.login_tv_connet, R.id.login_tv_skip})

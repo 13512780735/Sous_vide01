@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.likeit.sous_vide.R;
+import com.machtalk.sdk.connect.MachtalkSDK;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -20,6 +21,7 @@ public class MyApplication extends Application {
     //  private UserInfo userInfo = null;
     // 记录是否已经初始化
     private boolean isInit = false;
+
     public static MyApplication getInstance() {
         if (mContext == null) {
             return new MyApplication();
@@ -34,6 +36,7 @@ public class MyApplication extends Application {
         mContext = this;
         instance = this;
         // 图片加载工具初始化
+        MachtalkSDK.getInstance().startSDK(mContext,"1751");
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.mipmap.ic_public_nophoto)
                 .showImageOnFail(R.mipmap.ic_public_nophoto)
@@ -79,8 +82,6 @@ public class MyApplication extends Application {
         // 没有匹配的项，返回为null
         return null;
     }
-
-
 
 
     public static MyApplication getInstance(Context appContext) {
