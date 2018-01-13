@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted01;
+import com.machtalk.sdk.connect.MachtalkSDK;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
 
@@ -27,9 +28,11 @@ public class SetTempFragment extends DialogFragment implements View.OnClickListe
     private String temp;
     private NumberPickerView picker_hour;
     private NumberPickerView picker_minute;
-
+    String deviceId = "111110001000078288";
 
     private OnLoginInforCompleted01 mOnLoginInforCompleted01;
+    private String temp1;
+    private String flag;
 
     public void setOnLoginInforCompleted01(OnLoginInforCompleted01 onLoginInforCompleted01) {
         mOnLoginInforCompleted01 = onLoginInforCompleted01;
@@ -43,6 +46,8 @@ public class SetTempFragment extends DialogFragment implements View.OnClickListe
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().setCanceledOnTouchOutside(false);
         View view = inflater.inflate(R.layout.fragment_set_temp, container, false);
+        Bundle bundle = getArguments();
+        flag = bundle.getString("flag");
         initView(view);
         return view;
     }
@@ -56,8 +61,13 @@ public class SetTempFragment extends DialogFragment implements View.OnClickListe
         picker_minute.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
         tv_save.setOnClickListener(this);
-        setData(picker_hour, 0, 99, 55);
-        setData(picker_minute, 0, 9, 00);
+        if ("1".equals(flag)) {
+            setData(picker_hour, 0,Integer.valueOf(String.valueOf(Double.valueOf(99*1.8+32))), Integer.valueOf(String.valueOf(Double.valueOf(55*1.8+32))));
+            setData(picker_minute, 0, 9, 00);
+        } else {
+            setData(picker_hour, 0, 99, 55);
+            setData(picker_minute, 0, 9, 00);
+        }
     }
 
     private void setData(NumberPickerView picker, int minValue, int maxValue, int value) {
@@ -76,15 +86,19 @@ public class SetTempFragment extends DialogFragment implements View.OnClickListe
             case R.id.tv_save:
                 String h = picker_hour.getContentByCurrValue();
                 String m = picker_minute.getContentByCurrValue();
-                temp =h+"."+m+"℃";
+                temp = h + "." + m;
                 // mlistener.onDialogClick(time);
                 Log.d("TAG", temp);
+                temp1 = m;
+                Log.d("TAG", "h-->" + h);
+                Log.d("TAG", "m-->" + m);
+                MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"109"}, new String[]{m});
+                MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"110"}, new String[]{h});
                 mOnLoginInforCompleted01.inputLoginInforCompleted01(temp);
                 getDialog().dismiss();
                 break;
         }
     }
-
 
 
 }

@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted;
+import com.machtalk.sdk.connect.MachtalkSDK;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
 
@@ -23,13 +24,12 @@ import cn.carbswang.android.numberpickerview.library.NumberPickerView;
  */
 public class SetTimeFragment extends DialogFragment implements View.OnClickListener {
 
-    private int time1;
-    private int time2;
+    private String time1;
     private TextView tv_cancel, tv_save;
     private String time;
     private NumberPickerView picker_hour;
     private NumberPickerView picker_minute;
-
+    String deviceId="111110001000078288";
 
     private OnLoginInforCompleted mOnLoginInforCompleted;
 
@@ -46,6 +46,7 @@ public class SetTimeFragment extends DialogFragment implements View.OnClickListe
         getDialog().setCanceledOnTouchOutside(false);
         View view = inflater.inflate(R.layout.fragment_set_time, container, false);
         initView(view);
+        MachtalkSDK.getInstance().setContext(getActivity());
         return view;
     }
 
@@ -81,6 +82,11 @@ public class SetTimeFragment extends DialogFragment implements View.OnClickListe
                 time = String.valueOf(Integer.valueOf(h) * 60 + Integer.valueOf(m));
                 // mlistener.onDialogClick(time);
                 Log.d("TAG", time);
+                time1=String.valueOf(Integer.valueOf(m)/60);
+                Log.d("TAG", "h-->"+h);
+                Log.d("TAG", "m-->"+m);
+                MachtalkSDK.getInstance().operateDevice(deviceId,new String[]{"113"},new String[]{m});
+               MachtalkSDK.getInstance().operateDevice(deviceId,new String[]{"114"},new String[]{h});
                 mOnLoginInforCompleted.inputLoginInforCompleted(time);
                 getDialog().dismiss();
                 break;
