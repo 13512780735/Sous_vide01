@@ -22,7 +22,7 @@ import cn.carbswang.android.numberpickerview.library.NumberPickerView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SetTempFragment extends DialogFragment implements View.OnClickListener {
+public class SetTemp01Fragment extends DialogFragment implements View.OnClickListener {
 
     private TextView tv_cancel, tv_save;
     private String temp;
@@ -43,7 +43,7 @@ public class SetTempFragment extends DialogFragment implements View.OnClickListe
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().setCanceledOnTouchOutside(false);
-        View view = inflater.inflate(R.layout.fragment_set_temp, container, false);
+        View view = inflater.inflate(R.layout.fragment_set_temp01, container, false);
         initView(view);
         return view;
     }
