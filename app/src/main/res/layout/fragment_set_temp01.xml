@@ -34,7 +34,7 @@
                 app:npv_ItemPaddingVertical="5dp"
                 app:npv_RespondChangeInMainThread="false"
                 app:npv_ShowCount="5"
-                app:npv_TextArray="@array/hour_display"
+                app:npv_TextArray="@array/temp01_display"
                 app:npv_TextSizeNormal="16sp"
                 app:npv_TextSizeSelected="20sp"
                 app:npv_WrapSelectorWheel="true" />

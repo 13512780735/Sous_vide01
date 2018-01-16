@@ -57,7 +57,7 @@ public class SetTemp01Fragment extends DialogFragment implements View.OnClickLis
         picker_minute.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
         tv_save.setOnClickListener(this);
-        setData(picker_hour, 0, 99, 55);
+        setData(picker_hour, 0,209,131);
         setData(picker_minute, 0, 9, 00);
     }
 
@@ -81,8 +81,9 @@ public class SetTemp01Fragment extends DialogFragment implements View.OnClickLis
                 Log.d("TAG", temp);
                 Log.d("TAG", "h-->" + h);
                 Log.d("TAG", "m-->" + m);
+                // MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{"1"});
                 MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"109"}, new String[]{m});
-                MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"110"}, new String[]{h});
+                MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"110"}, new String[]{String.valueOf(Integer.valueOf(h)/1.8-32)});
                 mOnLoginInforCompleted01.inputLoginInforCompleted01(temp);
                 getDialog().dismiss();
                 break;

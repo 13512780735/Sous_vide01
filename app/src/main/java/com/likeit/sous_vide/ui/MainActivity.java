@@ -203,7 +203,13 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                 showTime();
                 break;
             case R.id.ll_settemp:
-                showTemp();
+
+                if("0".equals(flag)){
+                    showTemp();
+                }else{
+                   showTemp01();
+                    // showTemp();
+                }
                 break;
             case R.id.iv_open_close:
                 if ("0".equals(type)) {
@@ -223,7 +229,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                     tv_f.setTextColor(this.getResources().getColor(R.color.white));
                     flag = "1";
                     MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{flag});
-                    tv_settemp.setText(1.8 * Double.valueOf(temp) + 32 + "℉");
+                    tv_settemp.setText(1.8 * Double.valueOf(55) + 32 + "℉");
 
                 } else {
                     tv_c.setTextColor(this.getResources().getColor(R.color.white));
@@ -240,12 +246,15 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
     private void showTemp() {
         dialogFragment01 = new SetTempFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("flag", flag);
-        dialogFragment.setArguments(bundle);
         dialogFragment01.show(this.getSupportFragmentManager(), "android");
         dialogFragment01.setOnLoginInforCompleted01(this);
     }
-
+    private void showTemp01() {
+        SetTemp01Fragment dialogFragment02 = new SetTemp01Fragment();
+        Bundle bundle = new Bundle();
+        dialogFragment02.show(this.getSupportFragmentManager(), "android");
+        dialogFragment02.setOnLoginInforCompleted01(this);
+    }
     private void showTime() {
         dialogFragment = new SetTimeFragment();
         dialogFragment.show(this.getSupportFragmentManager(), "android");
@@ -264,7 +273,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         //tv_settemp.setText(temp);
         temp = temp1;
         if ("1".equals(flag)) {
-            tv_settemp.setText(1.8 * Double.valueOf(temp) + 32 + "℉");
+            tv_settemp.setText(temp+ "℉");
         } else {
             tv_settemp.setText(temp + "℃");
         }

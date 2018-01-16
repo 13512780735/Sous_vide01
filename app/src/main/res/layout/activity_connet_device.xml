@@ -68,7 +68,7 @@
                 android:background="@null"
                 android:gravity="center_vertical|left"
                 android:hint="Please input WIFI password"
-                android:inputType="number"
+                android:inputType="textPassword"
                 android:textColor="@color/defualt_textcolor_b"
                 android:textColorHint="@color/defualt_textcolor_f" />
         </LinearLayout>
