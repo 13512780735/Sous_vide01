@@ -35,8 +35,6 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity implements OnLoginInforCompleted, OnLoginInforCompleted01 {
     @BindView(R.id.slider)
     SliderLayout mSliderLayout;
-    //    @BindView(R.id.logo_title)
-//    TextView tvLogoTitle;
     @BindView(R.id.ll_setTime)
     LinearLayout ll_setTime;
     @BindView(R.id.ll_settemp)
@@ -64,12 +62,14 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
     private Device device;
     private DeviceAidDisplay aidDisplay;
     String temp = "55.0";
+    private int catid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        catid = 392;
         MachtalkSDK.getInstance().setContext(mContext);
         initTitle("Recipes");
         imageSlider();
@@ -81,6 +81,22 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         initView();
 
     }
+
+//    private void initFoodList() {
+//        HttpMethods.getInstance().HomeFoodList(new MySubscriber<ArrayList<HomeFoodListModel>>(this) {
+//            @Override
+//            public void onHttpCompleted(HttpResult<ArrayList<HomeFoodListModel>> httpResult) {
+//                if(httpResult.isStatus()){
+//                    Log.d("TAG",httpResult.getData()+"");
+//                }
+//            }
+//
+//            @Override
+//            public void onHttpError(Throwable e) {
+//
+//            }
+//        },ukey);
+//    }
 
     private void initView() {
         if ("0".equals(flag)) {
@@ -183,7 +199,10 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                         @Override
                         public void onSliderClick(BaseSliderView slider) {
-                            toActivity(FoodListActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("catid", "392");
+                            bundle.putString("name", "beaf");
+                            toActivity(FoodListActivity.class, bundle);
                         }
                     });
             mSliderLayout.addSlider(textSliderView);
@@ -204,10 +223,10 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                 break;
             case R.id.ll_settemp:
 
-                if("0".equals(flag)){
+                if ("0".equals(flag)) {
                     showTemp();
-                }else{
-                   showTemp01();
+                } else {
+                    showTemp01();
                     // showTemp();
                 }
                 break;
@@ -249,12 +268,14 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         dialogFragment01.show(this.getSupportFragmentManager(), "android");
         dialogFragment01.setOnLoginInforCompleted01(this);
     }
+
     private void showTemp01() {
         SetTemp01Fragment dialogFragment02 = new SetTemp01Fragment();
         Bundle bundle = new Bundle();
         dialogFragment02.show(this.getSupportFragmentManager(), "android");
         dialogFragment02.setOnLoginInforCompleted01(this);
     }
+
     private void showTime() {
         dialogFragment = new SetTimeFragment();
         dialogFragment.show(this.getSupportFragmentManager(), "android");
@@ -273,7 +294,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         //tv_settemp.setText(temp);
         temp = temp1;
         if ("1".equals(flag)) {
-            tv_settemp.setText(temp+ "℉");
+            tv_settemp.setText(temp + "℉");
         } else {
             tv_settemp.setText(temp + "℃");
         }

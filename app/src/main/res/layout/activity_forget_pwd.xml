@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.sous_vide.ui.ForgetPwdActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dip_xlarge"
+        android:layout_marginRight="@dimen/dip_xlarge"
+        android:layout_marginTop="@dimen/dip_xlarge"
+        android:background="@drawable/edit_input_bg"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+        <EditText
+            android:id="@+id/register_et_phone"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dip"
+            android:hint="Please enter your phone number / E-mail"
+            android:inputType="number"
+            android:textColorHint="@color/defualt_textcolor_d"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dip_xlarge"
+        android:layout_marginRight="@dimen/dip_xlarge"
+        android:layout_marginTop="@dimen/dip_xlarge"
+        android:background="@drawable/edit_input_bg"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+
+        <EditText
+            android:id="@+id/register_et_pwd"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dip"
+            android:hint="Please input your password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/defualt_textcolor_d"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dip_xlarge"
+        android:layout_marginRight="@dimen/dip_xlarge"
+        android:layout_marginTop="10dip"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="4"
+            android:background="@drawable/edit_input_bg"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+
+            <EditText
+                android:id="@+id/register_et_code"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="10dip"
+                android:hint="Verification Code"
+                android:inputType="number"
+                android:textColorHint="@color/defualt_textcolor_d"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/send_code_btn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="2"
+            android:background="@drawable/shape_round_bt_bg01"
+            android:gravity="center"
+            android:padding="16dip"
+            android:text="Send"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip"
+        android:background="@drawable/shape_round_bt_bg01"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="Reset"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_xxhdpi" />
+
+
+</LinearLayout>
+

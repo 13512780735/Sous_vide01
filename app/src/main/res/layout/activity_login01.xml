@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_x"
+    android:orientation="vertical"
+    tools:context="com.likeit.sous_vide.ui.Login01Activity">
+
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:maxLength="10"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="28sp" />
+
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_marginTop="80dip"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip"
+        android:alpha="0.8"
+        android:background="@drawable/shape_round_edittext_bg"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_login_phone"
+            android:drawablePadding="10dip"
+            android:text="手机号"
+            android:textColor="@color/defualt_textcolor_c" />
+
+        <EditText
+            android:id="@+id/login_et_phone"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="Phone Number / E-mail"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:alpha="0.8"
+        android:background="@drawable/shape_round_edittext_bg"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_login_password"
+            android:drawablePadding="10dip"
+            android:text="密码"
+            android:textColor="@color/defualt_textcolor_c" />
+
+        <EditText
+            android:id="@+id/login_et_pwd"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="20dip"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xhdpi"
+            android:background="@drawable/shape_round_bt_bg"
+            android:text="Register"/>
+        <TextView
+            android:id="@+id/tv_forgetpwd"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:text="Forget password"
+            android:padding="10dip"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xhdpi"
+            android:background="@drawable/shape_round_bt_bg"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_margin="20dip"
+        android:textSize="@dimen/text_size_xxhdpi"
+        android:background="@drawable/shape_round_bt_bg01"
+        android:padding="10dip"
+        android:text="Sign In"/>
+</LinearLayout>

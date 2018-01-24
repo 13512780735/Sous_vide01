@@ -2,6 +2,15 @@ package com.likeit.sous_vide.http.network;
 
 
 import com.likeit.sous_vide.http.network.entity.BaseHttpMethods;
+import com.likeit.sous_vide.http.network.entity.EmptyEntity;
+import com.likeit.sous_vide.http.network.entity.HttpResult;
+import com.likeit.sous_vide.http.subscriber.MySubscriber;
+import com.likeit.sous_vide.model.CateListModel;
+import com.likeit.sous_vide.model.HomeFoodListModel;
+import com.likeit.sous_vide.model.Loginmodel;
+import com.likeit.sous_vide.model.Registermodel;
+
+import java.util.ArrayList;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -24,11 +33,33 @@ public class HttpMethods extends BaseHttpMethods {
     public static HttpMethods getInstance() {
         return SingletonHolder.INSTANCE;
     }
-//
-//    public void RegisterUser(MySubscriber<EmptyEntity> subscriber, String mobile, String password) {
-//        Observable<HttpResult<EmptyEntity>> observable = myApiService.RegisterUser(mobile, password);
-//        toSubscribe(observable, subscriber);
-//    }
+
+    //
+    public void LoginUser(MySubscriber<Loginmodel> subscriber, String mobile, String password) {
+        Observable<HttpResult<Loginmodel>> observable = myApiService.LoginUser(mobile, password);
+        toSubscribe(observable, subscriber);
+    }
+
+    public void RegisterUser(MySubscriber<Registermodel> subscriber, String mobile, String area, String password) {
+        Observable<HttpResult<Registermodel>> observable = myApiService.RegisterUser(mobile, area, password);
+        toSubscribe(observable, subscriber);
+    }
+
+    public void ResetPwd(MySubscriber<EmptyEntity> subscriber, String mobile, String password) {
+        Observable<HttpResult<EmptyEntity>> observable = myApiService.ResetPwd(mobile, password);
+        toSubscribe(observable, subscriber);
+    }
+
+    public void HomeFoodList(MySubscriber<ArrayList<HomeFoodListModel>> subscriber, String ukey) {
+        Observable<HttpResult<ArrayList<HomeFoodListModel>>> observable = myApiService.HomeFoodList(ukey);
+        toSubscribe(observable, subscriber);
+    }
+
+    public void food_cate_detail(MySubscriber<ArrayList<CateListModel>> subscriber, String ukey, String catid) {
+        Observable<HttpResult<ArrayList<CateListModel>>> observable = myApiService.food_cate_detail(ukey, catid);
+        toSubscribe(observable, subscriber);
+    }
+
 //
 //
 //    public void GetShopHomeList(MySubscriber<ArrayList<ShopHomeInfoEntity>> subscriber, String ukey, String cid) {

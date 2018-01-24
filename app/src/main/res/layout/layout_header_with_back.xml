@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center_vertical"
-        android:maxLength="8"
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_size_normal" />
 

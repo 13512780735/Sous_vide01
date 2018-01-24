@@ -2,9 +2,11 @@ package com.likeit.sous_vide.ui;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.base.BaseActivity;
@@ -82,5 +84,24 @@ public class LoginActivity extends BaseActivity {
                 toActivity(MainActivity.class);
                 break;
         }
+    }
+    //记录用户首次点击返回键的时间
+    private long firstTime = 0;
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                long secondTime = System.currentTimeMillis();
+                if (secondTime - firstTime > 2000) {
+                    Toast.makeText(LoginActivity.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                    firstTime = secondTime;
+                    return true;
+                } else {
+                    //MyActivityManager.getInstance().moveTaskToBack(mContext);// 不退出，后台运行
+                }
+                break;
+        }
+        return super.onKeyUp(keyCode, event);
     }
 }

@@ -6,6 +6,7 @@
     <color name="header_bg">#69c9fc</color>
     <color name="defualt_window_background">#FCFCFC</color>
     <color name="white">#FFFFFF</color>
+    <color name="line">#D2D2D2</color>
     <color name="defualt_textcolor_a">#000000</color>   <!--重要的文字信息-->
     <color name="defualt_textcolor_b">#333333</color>
     <color name="defualt_textcolor_c">#666666</color>    <!--次重要的文字信息-->

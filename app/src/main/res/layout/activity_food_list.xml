@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.likeit.sous_vide.ui.FoodListActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/header_bg"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/header_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/header_bg" />
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="60.0dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/header_back_bg"
+            android:drawableLeft="@drawable/header_back"
+            android:drawableStart="@drawable/header_back"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:drawableRight="@mipmap/icon_down"
+            android:drawablePadding="5dip"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:maxLength="8"
+            android:textSize="@dimen/text_size_normal" />
+
+    </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/defualt_window_background"></android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

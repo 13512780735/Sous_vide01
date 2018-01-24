@@ -13,6 +13,9 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import java.util.Iterator;
 import java.util.List;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.smssdk.SMSSDK;
+
 
 public class MyApplication extends Application {
 
@@ -35,6 +38,7 @@ public class MyApplication extends Application {
         super.onCreate();
         mContext = this;
         instance = this;
+        initMob();
         // 图片加载工具初始化
         MachtalkSDK.getInstance().startSDK(mContext,"1751");
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
@@ -82,7 +86,10 @@ public class MyApplication extends Application {
         // 没有匹配的项，返回为null
         return null;
     }
-
+    private void initMob() {
+        ShareSDK.initSDK(mContext);
+        SMSSDK.initSDK(mContext, "23e41ab8960b8", "40589fdf048da2b79ec60f7b25366806");
+    }
 
     public static MyApplication getInstance(Context appContext) {
         return instance;
