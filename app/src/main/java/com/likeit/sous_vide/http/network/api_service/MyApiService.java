@@ -29,7 +29,7 @@ public interface MyApiService {
     String MyfoodList = BASE_URL + "?s=/api/user/foodlist";
     String UploadAvatar = BASE_URL + "?s=/api/user/up_avatar_base64";
     String EditPreson = BASE_URL + "?s=/api/user/editpassword";
-    String EditPwd = BASE_URL + "?s=/api/user/editpassword";
+    String EditPwd = BASE_URL + "?s=/api/user/editprofile";
     String resetpwd = BASE_URL + "?s=/api/user/passwordreset";
 
     //用户登录接口
