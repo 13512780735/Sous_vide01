@@ -118,9 +118,10 @@ public class Login01Activity extends BaseActivity {
                     JSONObject object = new JSONObject(response);
                     if ("true".equals(object.optString("status"))) {
                         UtilPreference.saveString(mContext, "ukey", object.optJSONObject("info").optString("ukey"));
-                        UtilPreference.saveString(mContext, "user_nickname", object.optJSONObject("info").optJSONObject("info").optString("user_nickname"));
-                        UtilPreference.saveString(mContext, "mobile", object.optJSONObject("info").optJSONObject("info").optString("mobile"));
+                        UtilPreference.saveString(mContext, "nickname", object.optJSONObject("info").optJSONObject("info").optString("user_nickname"));
+                        UtilPreference.saveString(mContext, "phone", object.optJSONObject("info").optJSONObject("info").optString("mobile"));
                         UtilPreference.saveString(mContext, "area", object.optJSONObject("info").optJSONObject("info").optString("area"));
+                        UtilPreference.saveString(mContext, "sex", object.optJSONObject("info").optJSONObject("info").optString("sex"));
                         toActivityFinish(LoginActivity.class);
                     } else {
                         showToast(object.optString("msg"));

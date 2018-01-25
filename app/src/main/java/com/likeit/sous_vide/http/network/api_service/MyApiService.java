@@ -25,6 +25,12 @@ public interface MyApiService {
     String GetCatelist = BASE_URL + "?s=/api/food/get_catelist";
     String food_cate_detail = BASE_URL + "?s=/api/food/food_cate_detail";
     String food_detail = BASE_URL + "?s=/api/food/food_detail";
+    String Upfood = BASE_URL + "?s=/api/user/upfood";
+    String MyfoodList = BASE_URL + "?s=/api/user/foodlist";
+    String UploadAvatar = BASE_URL + "?s=/api/user/up_avatar_base64";
+    String EditPreson = BASE_URL + "?s=/api/user/editpassword";
+    String EditPwd = BASE_URL + "?s=/api/user/editpassword";
+    String resetpwd = BASE_URL + "?s=/api/user/passwordreset";
 
     //用户登录接口
     @FormUrlEncoded
@@ -55,6 +61,22 @@ public interface MyApiService {
     Observable<HttpResult<ArrayList<CateListModel>>> food_cate_detail(@Field("ukey") String ukey,
                                                                       @Field("catid") String catid
                                                                           );
+
+    //上传头像
+    @FormUrlEncoded
+    @POST("?s=/api/user/up_avatar_base64")
+    Observable<HttpResult<EmptyEntity>> Upload(@Field("ukey") String ukey,
+                                                 @Field("avatar") String avatar);
+    //发布菜品
+    @FormUrlEncoded
+    @POST("?s=/api/user/upfood")
+    Observable<HttpResult<EmptyEntity>> Upfood(@Field("ukey") String ukey,
+                                                 @Field("imgs") String imgs,
+                                                 @Field("name") String name,
+                                                 @Field("wendu") String wendu,
+                                                 @Field("time") String time,
+                                                 @Field("description") String description
+                                               );
 
 
 //    /**

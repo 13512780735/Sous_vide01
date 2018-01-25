@@ -41,15 +41,15 @@
             android:drawablePadding="5dip"
             android:textSize="@dimen/text_size_normal" />
 
-        <TextView
-            android:id="@+id/tv_right"
+        <ImageView
+            android:id="@+id/iv_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dip"
-            android:maxLength="8"
-            android:textSize="@dimen/text_size_normal" />
+            android:padding="10dip"
+            android:src="@mipmap/icon_nav_add"
+          />
 
     </RelativeLayout>
 

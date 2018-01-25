@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defualt_window_background"
+    android:orientation="vertical"
+    tools:context="com.likeit.sous_vide.ui.CustomMenuActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/defualt_window_background"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dip"
+                    android:text="Title:"
+                    android:textColor="@color/defualt_textcolor_c" />
+
+                <EditText
+                    android:id="@+id/ed_title"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint=""
+                    android:textColorHint="@color/defualt_textcolor_f"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="@color/line"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dip"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="15dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="Description:"
+                    android:textColor="@color/defualt_textcolor_c" />
+
+                <EditText
+                    android:id="@+id/ed_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint=""
+                    android:paddingTop="10dip"
+                    android:textColorHint="@color/defualt_textcolor_f"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="@color/line"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dip">
+
+                <LinearLayout
+                    android:id="@+id/ll_setTime"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="20dip">
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/icon_settime"
+                        android:gravity="center_vertical"
+                        android:text="120'"
+                        android:textColor="@color/defualt_textcolor_a"
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Set Time"
+                        android:textColor="@color/header_bg" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_settemp"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="20dip">
+
+                    <TextView
+                        android:id="@+id/tv_settemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/icon_settemp"
+                        android:gravity="center_vertical"
+                        android:text="55 ℃"
+                        android:textColor="@color/defualt_textcolor_a"
+
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dip"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Set Temp"
+                        android:textColor="@color/header_bg" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="@color/line"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="10dip"
+                    android:text="Add pictures" />
+
+                <ImageView
+                    android:id="@+id/iv_takePhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dip"
+                    android:src="@mipmap/icon_take_photo" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="200dip"
+                android:layout_margin="10dip"
+                android:scaleType="fitXY" />
+
+
+            <TextView
+                android:id="@+id/tv_Save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dip"
+                android:background="@drawable/shape_round_bt_bg01"
+                android:gravity="center"
+                android:padding="10dip"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_xxhdpi" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

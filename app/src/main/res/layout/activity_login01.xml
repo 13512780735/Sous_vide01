@@ -28,10 +28,12 @@
 
 
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dip"
         android:layout_marginTop="80dip"></View>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,38 +93,40 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_margin="20dip"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip">
 
         <TextView
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dip"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_xhdpi"
             android:background="@drawable/shape_round_bt_bg"
-            android:text="Register"/>
+            android:padding="10dip"
+            android:text="Register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xhdpi" />
+
         <TextView
             android:id="@+id/tv_forgetpwd"
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:text="Forget password"
-            android:padding="10dip"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_xhdpi"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:background="@drawable/shape_round_bt_bg"
-            android:layout_height="wrap_content" />
+            android:padding="10dip"
+            android:text="Forget password"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xhdpi" />
     </RelativeLayout>
+
     <TextView
         android:id="@+id/tv_Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/white"
         android:layout_margin="20dip"
-        android:textSize="@dimen/text_size_xxhdpi"
         android:background="@drawable/shape_round_bt_bg01"
+        android:gravity="center"
         android:padding="10dip"
-        android:text="Sign In"/>
+        android:text="Sign In"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_xxhdpi" />
 </LinearLayout>

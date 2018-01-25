@@ -1,5 +1,6 @@
 package com.likeit.sous_vide.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -13,14 +14,15 @@ import android.widget.Toast;
 
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.base.BaseActivity;
-import com.likeit.sous_vide.http.network.HttpMethods;
-import com.likeit.sous_vide.http.network.entity.EmptyEntity;
-import com.likeit.sous_vide.http.network.entity.HttpResult;
-import com.likeit.sous_vide.http.subscriber.MySubscriber;
+import com.likeit.sous_vide.http.network.api_service.MyApiService;
+import com.likeit.sous_vide.util.HttpUtil;
 import com.likeit.sous_vide.util.LoaddingDialog;
+import com.likeit.sous_vide.util.MyActivityManager;
 import com.likeit.sous_vide.util.StringUtil;
 import com.likeit.sous_vide.util.ToastUtil;
+import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import butterknife.BindView;
@@ -186,27 +188,32 @@ public class ForgetPwdActivity extends BaseActivity {
             };
 
     private void Register() {
-        HttpMethods.getInstance().ResetPwd(new MySubscriber<EmptyEntity>(this) {
+        String url = MyApiService.resetpwd;
+        RequestParams params = new RequestParams();
+        params.put("mobile", mobile);
+        params.put("password", password);
+        HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
-            public void onHttpCompleted(HttpResult<EmptyEntity> httpResult) {
-                if (httpResult.isStatus()) {
-//                    UtilPreference.saveString(mContext, "ukey", httpResult.getData().getUkey());
-//                    UtilPreference.saveString(mContext, "user_nickname", httpResult.getData().getInfo().getUser_nickname());
-//                    UtilPreference.saveString(mContext, "mobile", httpResult.getData().getInfo().getMobile());
-//                    UtilPreference.saveString(mContext, "area", httpResult.getData().getInfo().getArea());
-//                    toActivityFinish(LoginActivity.class);
-                    showToast(httpResult.getMsg());
-                    toActivityFinish(Login01Activity.class);
-                } else {
-                    loaddingDialog.dismiss();
-                    showToast(httpResult.getMsg());
+            public void success(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if ("true".equals(object.optString("status"))) {
+                        ToastUtil.showS(mContext, object.optString("msg"));
+                        Intent intent = new Intent(mContext, Login01Activity.class);
+                        startActivity(intent);
+                        MyActivityManager.getInstance().finishAllActivity();
+                    } else {
+                        ToastUtil.showS(mContext, object.optString("msg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
 
             @Override
-            public void onHttpError(Throwable e) {
+            public void failed(Throwable e) {
 
             }
-        }, mobile,password);
+        });
     }
 }

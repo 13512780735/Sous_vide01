@@ -71,11 +71,14 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.iv_header_right, R.id.login_tv_connet, R.id.login_tv_skip})
+    @OnClick({R.id.iv_header_right,R.id.iv_header_left, R.id.login_tv_connet, R.id.login_tv_skip})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_header_right:
                 toActivity(ConnectDeviceActivity.class);
+                break;
+            case R.id.iv_header_left:
+                toActivity(PersonalCenterActivity.class);
                 break;
             case R.id.login_tv_connet:
                 toActivity(ConnectDeviceActivity.class);

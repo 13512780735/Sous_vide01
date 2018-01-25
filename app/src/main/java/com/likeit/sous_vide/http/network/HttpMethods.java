@@ -59,6 +59,14 @@ public class HttpMethods extends BaseHttpMethods {
         Observable<HttpResult<ArrayList<CateListModel>>> observable = myApiService.food_cate_detail(ukey, catid);
         toSubscribe(observable, subscriber);
     }
+    public void Upload(MySubscriber<EmptyEntity> subscriber, String ukey, String avatar) {
+        Observable<HttpResult<EmptyEntity>> observable = myApiService.Upload(ukey, avatar);
+        toSubscribe(observable, subscriber);
+    }
+    public void Upfood(MySubscriber<EmptyEntity> subscriber, String ukey, String imgs,String name,String wendu,String time,String description) {
+        Observable<HttpResult<EmptyEntity>> observable = myApiService.Upfood(ukey, imgs,name,wendu,time,description);
+        toSubscribe(observable, subscriber);
+    }
 
 //
 //

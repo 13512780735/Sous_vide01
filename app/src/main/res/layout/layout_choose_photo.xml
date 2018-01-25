@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dip"
+    android:layout_marginEnd="20dip"
+    android:background="@color/defualt_window_background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textchoice"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="choose picture"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+
+    <Button
+        android:id="@+id/button_take_photo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/header_bg"
+        android:text="Photo upload"
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/button_choice_photo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/header_bg"
+        android:text="Upload from album"
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/button_choice_cancer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/header_bg"
+        android:text="cancel"
+        android:textColor="@color/white" />
+
+</LinearLayout>

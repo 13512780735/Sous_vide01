@@ -40,6 +40,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="10dip"
         android:maxLength="8"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_size_normal" />
 
 </RelativeLayout>
