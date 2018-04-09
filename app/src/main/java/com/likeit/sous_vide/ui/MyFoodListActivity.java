@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.likeit.sous_vide.adapter.MyFoodListAdapter;
 import com.likeit.sous_vide.http.network.api_service.MyApiService;
 import com.likeit.sous_vide.model.MyFoodModel;
 import com.likeit.sous_vide.util.HttpUtil;
+import com.likeit.sous_vide.util.LoaddingDialog;
 import com.likeit.sous_vide.util.MyActivityManager;
 import com.likeit.sous_vide.util.UtilPreference;
 import com.loopj.android.http.RequestParams;
@@ -56,12 +58,16 @@ public class MyFoodListActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        final LoaddingDialog dialog = new LoaddingDialog(this);
+        dialog.show();
         String url = MyApiService.MyfoodList;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
+                dialog.dismiss();
+                Log.d("TAG999", response);
                 try {
                     JSONObject object = new JSONObject(response);
                     if ("true".equals(object.optString("status"))) {
@@ -79,12 +85,13 @@ public class MyFoodListActivity extends AppCompatActivity {
 
             @Override
             public void failed(Throwable e) {
-
+                dialog.dismiss();
             }
         });
     }
 
     private void initView() {
+        tvHeader.setText("My Release");
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new MyFoodListAdapter(R.layout.catefoodlist_listview_items, data);
         mRecyclerView.setAdapter(mAdapter);
@@ -93,9 +100,10 @@ public class MyFoodListActivity extends AppCompatActivity {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Bundle bundle = new Bundle();
                 bundle.putString("id", String.valueOf(data.get(position).getId()));
-                Intent intent = new Intent(mContext, FoodDetailActivity.class);
+                Intent intent = new Intent(mContext, MyFoodDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
             }
         });
     }

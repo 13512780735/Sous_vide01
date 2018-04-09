@@ -188,6 +188,7 @@ public class ForgetPwdActivity extends BaseActivity {
             };
 
     private void Register() {
+        loaddingDialog.show();
         String url = MyApiService.resetpwd;
         RequestParams params = new RequestParams();
         params.put("mobile", mobile);
@@ -195,6 +196,7 @@ public class ForgetPwdActivity extends BaseActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
+                loaddingDialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
                     if ("true".equals(object.optString("status"))) {
@@ -212,7 +214,7 @@ public class ForgetPwdActivity extends BaseActivity {
 
             @Override
             public void failed(Throwable e) {
-
+loaddingDialog.dismiss();
             }
         });
     }

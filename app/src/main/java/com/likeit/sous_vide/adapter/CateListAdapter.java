@@ -22,7 +22,7 @@ public class CateListAdapter extends BaseQuickAdapter<CateListModel,BaseViewHold
 
     @Override
     protected void convert(BaseViewHolder baseViewHolder, CateListModel cateListModel) {
-        ImageLoader.getInstance().displayImage(MyApiService.BASE_URL_IMG+cateListModel.getMore().getPhotos().get(0).getUrl(), (ImageView) baseViewHolder.getView(R.id.iv_avatar));
+        ImageLoader.getInstance().displayImage(cateListModel.getMore().getPhotos().get(0).getUrl(), (ImageView) baseViewHolder.getView(R.id.iv_avatar));
         baseViewHolder.setText(R.id.tv_name,cateListModel.getName());
     }
 }

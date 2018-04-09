@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted01;
+import com.likeit.sous_vide.listenter.OnLoginInforCompleted02;
+import com.likeit.sous_vide.listenter.OnLoginInforCompleted03;
 import com.machtalk.sdk.connect.MachtalkSDK;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
@@ -30,10 +32,10 @@ public class SetTemp01Fragment extends DialogFragment implements View.OnClickLis
     private NumberPickerView picker_minute;
     String deviceId = "111110001000078288";
 
-    private OnLoginInforCompleted01 mOnLoginInforCompleted01;
+    private OnLoginInforCompleted03 mOnLoginInforCompleted03;
 
-    public void setOnLoginInforCompleted01(OnLoginInforCompleted01 onLoginInforCompleted01) {
-        mOnLoginInforCompleted01 = onLoginInforCompleted01;
+    public void setOnLoginInforCompleted03(OnLoginInforCompleted03 onLoginInforCompleted03) {
+        mOnLoginInforCompleted03 = onLoginInforCompleted03;
     }
 
 
@@ -57,7 +59,7 @@ public class SetTemp01Fragment extends DialogFragment implements View.OnClickLis
         picker_minute.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
         tv_save.setOnClickListener(this);
-        setData(picker_hour, 0,209,131);
+        setData(picker_hour, 0, 209, 131);
         setData(picker_minute, 0, 9, 00);
     }
 
@@ -83,8 +85,8 @@ public class SetTemp01Fragment extends DialogFragment implements View.OnClickLis
                 Log.d("TAG", "m-->" + m);
                 // MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{"1"});
                 MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"109"}, new String[]{m});
-                MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"110"}, new String[]{String.valueOf(Integer.valueOf(h)/1.8-32)});
-                mOnLoginInforCompleted01.inputLoginInforCompleted01(temp);
+                MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"110"}, new String[]{String.valueOf(Integer.valueOf(h) / 1.8 - 32)});
+                mOnLoginInforCompleted03.inputLoginInforCompleted03(temp);
                 getDialog().dismiss();
                 break;
         }

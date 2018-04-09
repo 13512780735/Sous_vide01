@@ -66,9 +66,12 @@ public class Login01Activity extends BaseActivity {
             AndroidWorkaround.assistActivity(findViewById(android.R.id.content));
         }
         ButterKnife.bind(this);
+        String phone = UtilPreference.getStringValue(mContext, "phone");
+        String pwd = UtilPreference.getStringValue(mContext, "pwd");
         loaddingDialog = new LoaddingDialog(this);
         loaddingDialog.setCanceledOnTouchOutside(false);
-        loaddingDialog.setCancelable(false);
+        etPhone.setText(phone);
+        etPwd.setText(pwd);
         openPermission();
     }
 
@@ -106,6 +109,7 @@ public class Login01Activity extends BaseActivity {
     }
 
     private void Logining() {
+        loaddingDialog.show();
         String url = MyApiService.LoginUser;
         RequestParams params = new RequestParams();
         params.put("mobile", phone);
@@ -122,6 +126,9 @@ public class Login01Activity extends BaseActivity {
                         UtilPreference.saveString(mContext, "phone", object.optJSONObject("info").optJSONObject("info").optString("mobile"));
                         UtilPreference.saveString(mContext, "area", object.optJSONObject("info").optJSONObject("info").optString("area"));
                         UtilPreference.saveString(mContext, "sex", object.optJSONObject("info").optJSONObject("info").optString("sex"));
+                        UtilPreference.saveString(mContext, "headimg", object.optJSONObject("info").optJSONObject("info").optString("avatar"));
+                        UtilPreference.saveString(mContext, "phone", phone);
+                        UtilPreference.saveString(mContext, "pwd", pwd);
                         toActivityFinish(LoginActivity.class);
                     } else {
                         showToast(object.optString("msg"));
@@ -133,7 +140,7 @@ public class Login01Activity extends BaseActivity {
 
             @Override
             public void failed(Throwable e) {
-
+                loaddingDialog.dismiss();
             }
         });
 

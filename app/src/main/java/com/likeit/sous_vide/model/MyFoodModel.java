@@ -1,6 +1,7 @@
 package com.likeit.sous_vide.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/1/25.
@@ -8,14 +9,15 @@ import java.io.Serializable;
 
 public class MyFoodModel implements Serializable {
 
+
     /**
-     * id : 1
-     * name : test11
-     * wendu : 60
-     * time : 40
-     * description : xxx
-     * imgs : ./public/upload/userfood/8/8_headimg_1516384005.png
-     * add_time : 2018-01-24 01:18:11
+     * id : 23
+     * name : 9999
+     * wendu : 55.0
+     * time : 120
+     * description : 快快乐乐
+     * imgs : ["http://sousvide.wbteam.cn/upload/userfood/18/18_foods_1522061325_0.png"]
+     * add_time : 2018-03-26 18:48:45
      */
 
     private int id;
@@ -23,8 +25,8 @@ public class MyFoodModel implements Serializable {
     private String wendu;
     private String time;
     private String description;
-    private String imgs;
     private String add_time;
+    private List<String> imgs;
 
     public int getId() {
         return id;
@@ -66,19 +68,19 @@ public class MyFoodModel implements Serializable {
         this.description = description;
     }
 
-    public String getImgs() {
-        return imgs;
-    }
-
-    public void setImgs(String imgs) {
-        this.imgs = imgs;
-    }
-
     public String getAdd_time() {
         return add_time;
     }
 
     public void setAdd_time(String add_time) {
         this.add_time = add_time;
+    }
+
+    public List<String> getImgs() {
+        return imgs;
+    }
+
+    public void setImgs(List<String> imgs) {
+        this.imgs = imgs;
     }
 }

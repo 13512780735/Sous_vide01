@@ -22,7 +22,7 @@ public class MyFoodListAdapter extends BaseQuickAdapter<MyFoodModel, BaseViewHol
 
     @Override
     protected void convert(BaseViewHolder baseViewHolder, MyFoodModel myFoodModel) {
-        ImageLoader.getInstance().displayImage(MyApiService.BASE_URL_IMG+myFoodModel.getImgs(), (ImageView) baseViewHolder.getView(R.id.iv_avatar));
+        ImageLoader.getInstance().displayImage(myFoodModel.getImgs().get(0), (ImageView) baseViewHolder.getView(R.id.iv_avatar));
         baseViewHolder.setText(R.id.tv_name,myFoodModel.getName());
 
     }

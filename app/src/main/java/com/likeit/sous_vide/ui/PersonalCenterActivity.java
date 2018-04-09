@@ -35,6 +35,7 @@ import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.http.network.api_service.MyApiService;
 import com.likeit.sous_vide.util.CircleImageView;
 import com.likeit.sous_vide.util.HttpUtil;
+import com.likeit.sous_vide.util.LoaddingDialog;
 import com.likeit.sous_vide.util.MyActivityManager;
 import com.likeit.sous_vide.util.PhotoUtils;
 import com.likeit.sous_vide.util.ToastUtil;
@@ -104,6 +105,7 @@ public class PersonalCenterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_center);
+        MyActivityManager.getInstance().addActivity(this);
         ButterKnife.bind(this);
         ukey = UtilPreference.getStringValue(this, "ukey");
         mContext = this;
@@ -126,12 +128,14 @@ public class PersonalCenterActivity extends AppCompatActivity {
         edphone.setText(UtilPreference.getStringValue(mContext, "phone"));
     }
 
-    @OnClick({R.id.backBtn, R.id.tv_right, R.id.rl_release, R.id.rl_change_pwd, R.id.tv_Exit, R.id.iv_send, R.id.iv_avatar, R.id.tv_tvGender})
+    @OnClick({R.id.backBtn, R.id.tv_right, R.id.rl_release, R.id.rl_change_pwd, R.id.tv_Exit, R.id.iv_send, R.id.iv_avatar, R.id.tv_tvGender,R.id.rl_Contact,R.id.rl_about})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.backBtn:
                 intent = new Intent(mContext, LoginActivity.class);
                 startActivity(intent);
+                MyActivityManager.getInstance().finishAllActivity();
+
                 break;
             case R.id.iv_avatar:
                 selectAvatar();
@@ -159,6 +163,14 @@ public class PersonalCenterActivity extends AppCompatActivity {
                 break;
             case R.id.iv_send:
                 intent = new Intent(mContext, CustomMenuActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_Contact:
+                intent = new Intent(mContext, ContactActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_about:
+                intent = new Intent(mContext,AboutActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -468,22 +480,32 @@ public class PersonalCenterActivity extends AppCompatActivity {
         //super.onBackPressed();
         intent = new Intent(mContext, LoginActivity.class);
         startActivity(intent);
+        MyActivityManager.getInstance().finishAllActivity();
     }
 
     private void saveInfo() {
+        final LoaddingDialog dialog=new LoaddingDialog(this);
+        dialog.show();
         String url = MyApiService.EditPreson;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
         params.put("user_nickname", name);
         params.put("sex", sex);
-        params.put("birthday", "");
+        params.put("birthday", "111");
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
+                dialog.dismiss();
+                Log.d("TAG",response);
                 try {
                     JSONObject object = new JSONObject(response);
                     if ("true".equals(object.optString("status"))) {
                         ToastUtil.showS(mContext, object.optString("msg"));
+                        UtilPreference.saveString(mContext, "nickname", object.optJSONObject("info").optString("user_nickname"));
+                        UtilPreference.saveString(mContext, "phone", object.optJSONObject("info").optString("mobile"));
+                        UtilPreference.saveString(mContext, "area", object.optJSONObject("info").optString("area"));
+                        UtilPreference.saveString(mContext, "sex", object.optJSONObject("info").optString("sex"));
+                        UtilPreference.saveString(mContext, "headimg", object.optJSONObject("info").optString("avatar"));
                         intent = new Intent(mContext, LoginActivity.class);
                         startActivity(intent);
                         MyActivityManager.getInstance().finishAllActivity();
@@ -497,8 +519,9 @@ public class PersonalCenterActivity extends AppCompatActivity {
 
             @Override
             public void failed(Throwable e) {
-
+                dialog.dismiss();
             }
+
         });
     }
 }

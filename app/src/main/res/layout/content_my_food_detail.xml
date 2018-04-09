@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defualt_window_background"
+    android:orientation="vertical"
+    tools:context="com.likeit.sous_vide.ui.MyFoodDetailActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:layout_margin="10dip"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/beef_bg" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:alpha="0.3"
+            android:background="#000000">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dip">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="@color/header_bg" />
+
+        <TextView
+            android:id="@+id/tv_prep_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip" />
+
+        <TextView
+            android:id="@+id/tv_total_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip" />
+
+        <TextView
+            android:id="@+id/tv_cook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip" />
+
+        <TextView
+            android:id="@+id/tv_serverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip" />
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="20dip"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Boar behaves very similarly to pork but has a richer,sometimes nutty flavor.I like to prepare"-->
+            <!--android:textColor="@color/defualt_textcolor_c" />-->
+        <com.likeit.sous_vide.util.richtext.RichText
+            android:id="@+id/tv_ser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:textColor="@color/defualt_textcolor_c"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_Heating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dip"
+            android:background="@drawable/shape_round_bt_bg01"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text="Heating"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xhdpi" />
+    </LinearLayout>
+</LinearLayout>
+

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -61,6 +62,7 @@ public class FoodListActivity extends BaseActivity implements SwipeRefreshLayout
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
+                Log.d("TAG8888",response);
                 try {
                     JSONObject object = new JSONObject(response);
                     if ("true".equals(object.optString("status"))) {

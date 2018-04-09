@@ -10,11 +10,14 @@ import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.likeit.sous_vide.R;
 import com.likeit.sous_vide.base.BaseActivity;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted01;
+import com.likeit.sous_vide.listenter.OnLoginInforCompleted02;
+import com.likeit.sous_vide.listenter.OnLoginInforCompleted03;
 import com.likeit.sous_vide.model.DeviceAidDisplay;
 import com.machtalk.sdk.connect.MachtalkSDK;
 import com.machtalk.sdk.connect.MachtalkSDKListener;
@@ -24,15 +27,17 @@ import com.machtalk.sdk.domain.DeviceAttributeInfo;
 import com.machtalk.sdk.domain.DeviceStatus;
 import com.machtalk.sdk.domain.Result;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements OnLoginInforCompleted, OnLoginInforCompleted01 {
+public class MainActivity extends BaseActivity implements OnLoginInforCompleted, OnLoginInforCompleted01, OnLoginInforCompleted03 {
     @BindView(R.id.slider)
     SliderLayout mSliderLayout;
     @BindView(R.id.ll_setTime)
@@ -63,6 +68,15 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
     private DeviceAidDisplay aidDisplay;
     String temp = "55.0";
     private int catid;
+    private String time01;
+    private Serializable adlists;
+    private Bundle bundle;
+    private List<Map<String, Object>> dataList02;
+    // 图片封装为一个数组
+    private String[] id = {"392", "393", "395", "396", "397", "398"};
+    private String[] name = {"Beef", "Egg", "Poultry", "Pork", "Vegetables", "Seafood"};
+    private int[] img = {R.mipmap.icon_beef, R.mipmap.icon_egg, R.mipmap.icon_poultry, R.mipmap.icon_pork, R.mipmap.icon_vegetables, R.mipmap.icon_seafood};
+    private String flagType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,25 +92,17 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         MachtalkSDK.getInstance().queryDeviceStatus(deviceId);
         MachtalkSDK.getInstance().getDeviceAttribute(deviceId);
         MachtalkSDK.getInstance().setSdkListener(mSdkListener);
+        time01 = getIntent().getExtras().getString("time");
+        temp = getIntent().getExtras().getString("temp");
+        adlists = getIntent().getExtras().getSerializable("adlists");
+        Log.d("TAG5656", adlists.toString());
+        flagType="0";
         initView();
-
+        initData2();
     }
 
-//    private void initFoodList() {
-//        HttpMethods.getInstance().HomeFoodList(new MySubscriber<ArrayList<HomeFoodListModel>>(this) {
-//            @Override
-//            public void onHttpCompleted(HttpResult<ArrayList<HomeFoodListModel>> httpResult) {
-//                if(httpResult.isStatus()){
-//                    Log.d("TAG",httpResult.getData()+"");
-//                }
-//            }
-//
-//            @Override
-//            public void onHttpError(Throwable e) {
-//
-//            }
-//        },ukey);
-//    }
+    private void initData2() {
+    }
 
     private void initView() {
         if ("0".equals(flag)) {
@@ -110,10 +116,12 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
             MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{flag});
             tv_settemp.setText(1.8 * Double.valueOf(temp) + 32 + "℉");
         }
+        tv_time.setText(time01 + "'");
     }
 
     private List<AidStatus> aidList;
     private List<DeviceAidDisplay> attrList = new ArrayList<DeviceAidDisplay>();
+
 
     class MyMachtalkSDKListener extends MachtalkSDKListener {
         @Override
@@ -127,8 +135,6 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         @Override
         public void onQueryDeviceStatus(Result result, DeviceStatus deviceStatus) {
             super.onQueryDeviceStatus(result, deviceStatus);
-            Log.d("TAG", result.getErrorMessage());
-            Log.d("TAG", result.getErrorCode());
             int success = Result.FAILED;
             String errmesg = null;
             if (result != null) {
@@ -139,8 +145,6 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                 aidList = deviceStatus.getDeviceAidStatuslist();
                 if (aidList != null) {
                     for (AidStatus aidStatus : aidList) {
-                        Log.d("TAG", "aid-->" + aidStatus.getAid());
-                        Log.d("TAG", "values-->" + aidStatus.getValue());
 //                        if (isIRDevice){
 //                            try {
 //                                if (Constant.AID_MODE.equals(aidStatus.getAid())){
@@ -179,18 +183,23 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
     }
 
     private void imageSlider() {
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Beef", R.drawable.beef_bg);
-        file_maps.put("Beefs", R.drawable.beef_bg);
-        file_maps.put("Beef", R.drawable.beef_bg);
-//        for (int i = 0; i < file_maps.size(); i++) {
-//            DefaultSliderView defaultSliderView = new DefaultSliderView(getActivity());
-//            // textSliderView.description("");//设置标题
-//            defaultSliderView.image(file_maps.get(i));//设置图片的网络地址
+//        dataList02 = new ArrayList<Map<String, Object>>();
+//        getData02();
+        final HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Beef", R.mipmap.icon_beef);
+        file_maps.put("Egg", R.mipmap.icon_egg);
+        file_maps.put("Poultry", R.mipmap.icon_poultry);
+        file_maps.put("Pork", R.mipmap.icon_pork);
+        file_maps.put("Vegetables", R.mipmap.icon_vegetables);
+        file_maps.put("Seafood", R.mipmap.icon_seafood);
+//        for (int i = 0; i < dataList02.size(); i++) {
+//            TextSliderView textSliderView = new TextSliderView(this);
+//            textSliderView.description(dataList02.get(i).get("name").toString());//设置标题
+//            textSliderView.image(dataList02.get(i).get("img").toString());//设置图片的网络地址
 //            //添加到布局中显示
-//            sliderShow.addSlider(defaultSliderView);
+//            mSliderLayout.addSlider(textSliderView);
 //        }
-        for (String name : file_maps.keySet()) {
+        for (final String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
             textSliderView
                     .description(name)
@@ -199,10 +208,40 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                         @Override
                         public void onSliderClick(BaseSliderView slider) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("catid", "392");
-                            bundle.putString("name", "beaf");
-                            toActivity(FoodListActivity.class, bundle);
+
+                            if ("Beef".equals(name)) {
+                                bundle = new Bundle();
+                                bundle.putString("catid", "392");
+                                bundle.putString("name", "Beef");
+                                toActivity(FoodListActivity.class, bundle);
+                            } else if ("Egg".equals(name)) {
+                                bundle = new Bundle();
+                                bundle.putString("catid", "393");
+                                bundle.putString("name", "Egg");
+                                toActivity(FoodListActivity.class, bundle);
+                            } else if ("Poultry".equals(name)) {
+                                bundle = new Bundle();
+                                bundle.putString("catid", "395");
+                                bundle.putString("name", "Poultry");
+                                toActivity(FoodListActivity.class, bundle);
+                            } else if ("Pork".equals(name)) {
+                                bundle = new Bundle();
+                                bundle.putString("catid", "396");
+                                bundle.putString("name", "Pork");
+                                toActivity(FoodListActivity.class, bundle);
+                            } else if ("Seafood".equals(name)) {
+                                bundle = new Bundle();
+                                bundle.putString("catid", "398");
+                                bundle.putString("name", "Seafood");
+                                toActivity(FoodListActivity.class, bundle);
+                            } else if ("Vegetables".equals(name)) {
+                                bundle = new Bundle();
+                                bundle.putString("catid", "397");
+                                bundle.putString("name", "Vegetables");
+                                toActivity(FoodListActivity.class, bundle);
+                            }
+
+
                         }
                     });
             mSliderLayout.addSlider(textSliderView);
@@ -214,6 +253,17 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
 
     }
 
+    private List<Map<String, Object>> getData02() {
+        for (int i = 0; i < id.length; i++) {
+            //Log.d("TAG", "" + cash.length);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("id", id[i]);
+            map.put("img", img[i]);
+            map.put("name", name[i]);
+            dataList02.add(map);
+        }
+        return dataList02;
+    }
 
     @OnClick({R.id.ll_setTime, R.id.ll_settemp, R.id.iv_open_close, R.id.rl_temp})
     public void onClick(View v) {
@@ -222,10 +272,11 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                 showTime();
                 break;
             case R.id.ll_settemp:
-
                 if ("0".equals(flag)) {
+                    flagType="0";
                     showTemp();
                 } else {
+                    flagType="1";
                     showTemp01();
                     // showTemp();
                 }
@@ -243,21 +294,41 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
                 }
                 break;
             case R.id.rl_temp:
+                if("0".equals(flagType)){
+                    if ("0".equals(flag)) {
+                        tv_c.setTextColor(this.getResources().getColor(R.color.defualt_textcolor_a));
+                        tv_f.setTextColor(this.getResources().getColor(R.color.white));
+                        flag = "1";
+                        MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{flag});
+                        tv_settemp.setText(1.8 * Double.valueOf(temp) + 32 + "℉");
+
+                    } else if ("1".equals(flag)) {
+                        tv_c.setTextColor(this.getResources().getColor(R.color.white));
+                        tv_f.setTextColor(this.getResources().getColor(R.color.defualt_textcolor_a));
+                        flag = "0";
+                        MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{flag});
+                        //temp=String.valueOf(Double.valueOf(temp3) / 1.8 - 32);
+                        tv_settemp.setText(temp + "℃");
+
+
+                    }
+                }else{
                 if ("0".equals(flag)) {
                     tv_c.setTextColor(this.getResources().getColor(R.color.defualt_textcolor_a));
                     tv_f.setTextColor(this.getResources().getColor(R.color.white));
                     flag = "1";
                     MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{flag});
-                    tv_settemp.setText(1.8 * Double.valueOf(55) + 32 + "℉");
+                    tv_settemp.setText(temp+ "℉");
 
-                } else {
+                } else if ("1".equals(flag)) {
                     tv_c.setTextColor(this.getResources().getColor(R.color.white));
                     tv_f.setTextColor(this.getResources().getColor(R.color.defualt_textcolor_a));
                     flag = "0";
                     MachtalkSDK.getInstance().operateDevice(deviceId, new String[]{"104"}, new String[]{flag});
-                    tv_settemp.setText(temp + "℃");
+                    tv_settemp.setText(Double.valueOf(temp) / 1.8 - 32 + "℃");
 
-                }
+
+                }}
                 break;
         }
     }
@@ -273,7 +344,7 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
         SetTemp01Fragment dialogFragment02 = new SetTemp01Fragment();
         Bundle bundle = new Bundle();
         dialogFragment02.show(this.getSupportFragmentManager(), "android");
-        dialogFragment02.setOnLoginInforCompleted01(this);
+        dialogFragment02.setOnLoginInforCompleted03(this);
     }
 
     private void showTime() {
@@ -285,7 +356,8 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
 
     @Override
     public void inputLoginInforCompleted(String time) {
-        tv_time.setText(time + " '");
+        time01 = time;
+        tv_time.setText(time01 + " '");
 
     }
 
@@ -293,10 +365,14 @@ public class MainActivity extends BaseActivity implements OnLoginInforCompleted,
     public void inputLoginInforCompleted01(String temp1) {
         //tv_settemp.setText(temp);
         temp = temp1;
-        if ("1".equals(flag)) {
-            tv_settemp.setText(temp + "℉");
-        } else {
-            tv_settemp.setText(temp + "℃");
-        }
+        flag="0";
+        tv_settemp.setText(temp + "℃");
+    }
+
+    @Override
+    public void inputLoginInforCompleted03(String temp1) {
+        temp = temp1;
+        flag="1";
+        tv_settemp.setText(temp + "℉");
     }
 }

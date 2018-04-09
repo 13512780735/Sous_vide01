@@ -32,6 +32,7 @@ import com.likeit.sous_vide.http.network.api_service.MyApiService;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted;
 import com.likeit.sous_vide.listenter.OnLoginInforCompleted01;
 import com.likeit.sous_vide.util.HttpUtil;
+import com.likeit.sous_vide.util.LoaddingDialog;
 import com.likeit.sous_vide.util.PhotoUtils;
 import com.likeit.sous_vide.util.StringUtil;
 import com.likeit.sous_vide.util.ToastUtil;
@@ -310,6 +311,8 @@ public class CustomMenuActivity extends BaseActivity implements OnLoginInforComp
     }
 
     private void upLoad() {
+        final LoaddingDialog dialog=new LoaddingDialog(this);
+        dialog.show();
         String url = MyApiService.Upfood;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -321,6 +324,7 @@ public class CustomMenuActivity extends BaseActivity implements OnLoginInforComp
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
+                dialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
                     if ("true".equals(object.optString("status"))) {
@@ -339,7 +343,7 @@ public class CustomMenuActivity extends BaseActivity implements OnLoginInforComp
 
             @Override
             public void failed(Throwable e) {
-
+dialog.dismiss();
             }
         });
 //        HttpMethods.getInstance().Upfood(new MySubscriber<EmptyEntity>(this) {

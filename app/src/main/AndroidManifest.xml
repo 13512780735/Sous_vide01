@@ -67,7 +67,13 @@
         <activity android:name=".ui.CustomMenuActivity" />
         <activity android:name=".ui.MyFoodListActivity" />
         <activity android:name=".ui.PersonalCenterActivity" />
-        <activity android:name=".ui.EditPwdActivity"></activity>
+        <activity android:name=".ui.EditPwdActivity" />
+        <activity
+            android:name=".ui.MyFoodDetailActivity"
+            android:label="@string/title_activity_my_food_detail"
+            android:theme="@style/MyAppTheme" />
+        <activity android:name=".ui.ContactActivity" />
+        <activity android:name=".ui.AboutActivity"></activity>
     </application>
 
 </manifest>

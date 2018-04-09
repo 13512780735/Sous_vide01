@@ -70,7 +70,6 @@ public class RegisterActivity extends BaseActivity {
         SMSSDK.registerEventHandler(eh);
         loaddingDialog = new LoaddingDialog(this);
         loaddingDialog.setCanceledOnTouchOutside(false);
-        loaddingDialog.setCancelable(false);
         tvHeader.setText("Register");
     }
 
@@ -187,6 +186,7 @@ public class RegisterActivity extends BaseActivity {
             };
 
     private void Register() {
+        loaddingDialog.show();
         String url = MyApiService.RegisterUser;
         RequestParams params = new RequestParams();
         params.put("area", 86);
@@ -204,6 +204,8 @@ public class RegisterActivity extends BaseActivity {
                         UtilPreference.saveString(mContext, "phone", object.optJSONObject("info").optJSONObject("info").optString("mobile"));
                         UtilPreference.saveString(mContext, "area", object.optJSONObject("info").optJSONObject("info").optString("area"));
                         UtilPreference.saveString(mContext, "sex", object.optJSONObject("info").optJSONObject("info").optString("sex"));
+                        UtilPreference.saveString(mContext, "headimg", object.optJSONObject("info").optJSONObject("info").optString("avatar"));
+
                         toActivityFinish(LoginActivity.class);
                     } else {
                         showToast(object.optString("msg"));
@@ -215,7 +217,7 @@ public class RegisterActivity extends BaseActivity {
 
             @Override
             public void failed(Throwable e) {
-
+loaddingDialog.dismiss();
             }
         });
 //        HttpMethods.getInstance().RegisterUser(new MySubscriber<Registermodel>(this) {

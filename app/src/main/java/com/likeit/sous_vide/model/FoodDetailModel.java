@@ -15,6 +15,8 @@ public class FoodDetailModel implements Serializable{
      * time : 30
      * description : test is test
      * cat_name : beaf
+     "desc": "<p>描述2</p>",
+     "memo": "<p>描述3</p>",
      * more : {"thumbnail":"food/20180120/4775929710942cba669fb75e76966451.jpg","photos":[{"url":"food/20180120/74bd605d3e7994634dd86b2523431058.jpg","name":"timg (1).jpg"}]}
      */
 
@@ -22,8 +24,26 @@ public class FoodDetailModel implements Serializable{
     private String wendu;
     private String time;
     private String description;
+    private String desc;
+    private String memo;
     private String cat_name;
     private MoreBean more;
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
 
     public String getName() {
         return name;

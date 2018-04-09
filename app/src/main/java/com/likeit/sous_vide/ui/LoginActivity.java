@@ -15,6 +15,8 @@ import com.machtalk.sdk.connect.MachtalkSDK;
 import com.machtalk.sdk.connect.MachtalkSDKListener;
 import com.machtalk.sdk.domain.Result;
 
+import java.io.Serializable;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -78,13 +80,18 @@ public class LoginActivity extends BaseActivity {
                 toActivity(ConnectDeviceActivity.class);
                 break;
             case R.id.iv_header_left:
-                toActivity(PersonalCenterActivity.class);
+                toActivityFinish(PersonalCenterActivity.class);
                 break;
             case R.id.login_tv_connet:
                 toActivity(ConnectDeviceActivity.class);
                 break;
             case R.id.login_tv_skip:
-                toActivity(MainActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("time","120");
+                bundle.putString("temp","55");
+                bundle.putString("adKey", "1");
+                bundle.putSerializable("adlists", "");
+                toActivity(MainActivity.class,bundle);
                 break;
         }
     }

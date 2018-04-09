@@ -28,9 +28,12 @@ public interface MyApiService {
     String Upfood = BASE_URL + "?s=/api/user/upfood";
     String MyfoodList = BASE_URL + "?s=/api/user/foodlist";
     String UploadAvatar = BASE_URL + "?s=/api/user/up_avatar_base64";
-    String EditPreson = BASE_URL + "?s=/api/user/editpassword";
-    String EditPwd = BASE_URL + "?s=/api/user/editprofile";
+    String  EditPwd= BASE_URL + "?s=/api/user/editpassword";
+    String EditPreson = BASE_URL + "?s=/api/user/editprofile";
     String resetpwd = BASE_URL + "?s=/api/user/passwordreset";
+    String myFoodDetail = BASE_URL + "?s=api/user/getfood";
+    String delFood = BASE_URL + "?s=api/user/delfood";
+    String aboutUs = BASE_URL + "?s=api/info/get_info";
 
     //用户登录接口
     @FormUrlEncoded

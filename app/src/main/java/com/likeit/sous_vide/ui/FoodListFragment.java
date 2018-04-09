@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,6 +95,7 @@ public class FoodListFragment extends DialogFragment {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
+                Log.d("TAG888",response);
                 loaddingDialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);

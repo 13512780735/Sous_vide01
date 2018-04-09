@@ -6,90 +6,164 @@
     android:background="@color/defualt_window_background"
     android:orientation="vertical"
     tools:context="com.likeit.sous_vide.ui.FoodDetailActivity">
+
     <include layout="@layout/layout_header_with_back"></include>
-    <FrameLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:layout_margin="10dip"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <ImageView
-            android:id="@+id/iv_avatar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:scaleType="fitXY" />
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="18sp" />
-    </FrameLayout>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/dp_10"
+                android:textSize="18sp" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dip"
+                android:layout_margin="10dip"
+                android:orientation="vertical">
 
-    <LinearLayout
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dip"
+                    android:scaleType="fitXY" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:alpha="0.3"
+                    android:background="#000000">
+
+                </RelativeLayout>
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dip">
+
+                <!--      <TextView
+
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Description"
+                          android:textColor="@color/header_bg" />-->
+                <RadioGroup
+                    android:id="@+id/btn_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+
+                    <RadioButton
+                        android:id="@+id/btn_Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="-1dp"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="Description"
+                        android:textColor="@color/selected_other_result_butt_txt"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/btn_Ingredients"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="-2dp"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Ingredients"
+                        android:textColor="@color/selected_other_result_butt_txt"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/btn_Directions"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="-2dp"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Directions"
+                        android:textColor="@color/selected_other_result_butt_txt"
+                        android:textSize="16sp" />
+
+                </RadioGroup>
+
+
+                <TextView
+                    android:id="@+id/tv_prep_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dip" />
+
+                <TextView
+                    android:id="@+id/tv_total_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dip" />
+
+                <TextView
+                    android:id="@+id/tv_cook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dip" />
+
+                <TextView
+                    android:id="@+id/tv_serverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="5dip" />
+
+                <com.likeit.sous_vide.util.richtext.RichText
+                    android:id="@+id/tv_ser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:textColor="@color/defualt_textcolor_c" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+    <TextView
+        android:id="@+id/tv_Heating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="10dip">
-
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            android:textColor="@color/header_bg" />
-
-        <TextView
-            android:id="@+id/tv_prep_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            />
-
-        <TextView
-            android:id="@+id/tv_total_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            />
-
-        <TextView
-            android:id="@+id/tv_cook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            />
-
-        <TextView
-            android:id="@+id/tv_serverse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-           />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:gravity="center"
-            android:text="Boar behaves very similarly to pork but has a richer,sometimes nutty flavor.I like to prepare"
-            android:textColor="@color/defualt_textcolor_c" />
-
-        <TextView
-            android:id="@+id/tv_Heating"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dip"
-            android:background="@drawable/shape_round_bt_bg01"
-            android:gravity="center"
-            android:padding="10dip"
-            android:text="Heating"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_xhdpi" />
-    </LinearLayout>
+        android:layout_margin="20dip"
+        android:background="@drawable/shape_round_bt_bg01"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="Heating"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_xhdpi" />
 </LinearLayout>
